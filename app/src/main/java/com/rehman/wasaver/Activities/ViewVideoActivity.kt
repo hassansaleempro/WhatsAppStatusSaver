@@ -26,6 +26,9 @@ class ViewVideoActivity : AppCompatActivity() {
         )
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_view_video)
+        binding.back.setOnClickListener {
+            onBackPressed()
+        }
 
         val fileUri = intent.getStringExtra("fileUri")
         val video = Uri.parse(fileUri)
@@ -49,11 +52,11 @@ class ViewVideoActivity : AppCompatActivity() {
         binding.videoView.setOnClickListener(View.OnClickListener {
 
             if (binding.videoView.isPlaying) {
-               binding.videoView.pause()
-                binding.wpPlay.visibility= View.VISIBLE
-            }else{
+                binding.videoView.pause()
+                binding.wpPlay.visibility = View.VISIBLE
+            } else {
                 binding.videoView.start()
-                binding.wpPlay.visibility= View.GONE
+                binding.wpPlay.visibility = View.GONE
             }
         })
 

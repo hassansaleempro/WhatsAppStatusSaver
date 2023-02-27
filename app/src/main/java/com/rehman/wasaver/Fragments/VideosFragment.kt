@@ -210,7 +210,24 @@ class VideosFragment : Fragment() {
             ) as StorageManager
 
             val intent = sm.primaryStorageVolume.createOpenDocumentTreeIntent()
-            val starDir = "Android%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia%2F.Statuses"
+
+
+            var starDir = ""
+
+            if (isInstalled("com.whatsapp")) {
+
+                starDir = "Android%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia%2F.Statuses"
+            } else if (isInstalled("com.whatsapp.w4b")) {
+                starDir = "Android%2Fmedia%2Fcom.whatsapp.w4b%2FWhatsApp%2FMedia%2F.Statuses"
+            } else {
+                Toast.makeText(
+                    requireContext(), "Original WhatsApp is not installed", Toast
+                        .LENGTH_SHORT
+                ).show()
+            }
+
+
+
             var uri = intent.getParcelableExtra<Uri>("android.provider.extra.INITIAL_URI")
             var scheme = uri.toString()
             scheme=scheme.replace("/root/","/Document/")
@@ -227,6 +244,22 @@ class VideosFragment : Fragment() {
 
         checkPermissions(0)
     }
+
+    private fun isInstalled(s: String): Boolean {
+        val packageManager = requireContext().applicationContext?.packageManager
+        var isInstalled = false
+
+        try {
+            packageManager?.getPackageInfo(s, PackageManager.GET_ACTIVITIES)
+            isInstalled = true
+        } catch (e: PackageManager.NameNotFoundException) {
+            e.printStackTrace()
+        }
+
+        return isInstalled
+    }
+
+
 
     private fun checkPermissions(type: Int): Boolean {
         var result: Int

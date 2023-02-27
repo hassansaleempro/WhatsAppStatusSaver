@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -31,6 +32,10 @@ class ViewImageActivity : AppCompatActivity() {
 
         fileUri = intent.getStringExtra("fileUri").toString()
         Glide.with(applicationContext).load(fileUri).into(binding.imageView)
+
+        binding.back.setOnClickListener(View.OnClickListener {
+            onBackPressed()
+        })
 
 
         val uri = Uri.parse(fileUri)
