@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/image"
+        android:enabled="true"
+        android:icon="@drawable/images"
+        android:title="Images"
+        app:cnb_iconColor="@color/blue"
+        app:cnb_textColor="@color/blue" />
+
+    <item
+        android:id="@+id/video"
+        android:enabled="true"
+        android:icon="@drawable/videos"
+        android:title="Videos"
+        app:cnb_iconColor="@color/purple"
+        app:cnb_textColor="@color/purple" />
+    <item
+        android:id="@+id/fav"
+        android:enabled="true"
+        android:icon="@drawable/save"
+        android:title="Save"
+        app:cnb_iconColor="@android:color/holo_red_dark"
+        app:cnb_textColor="@android:color/holo_red_dark" />
+
+
+</menu>
