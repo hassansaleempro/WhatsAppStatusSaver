@@ -79,8 +79,7 @@ class ViewVideoActivity : AppCompatActivity() {
 
             binding.root.background = gradientDrawable
 
-            val colorAnimation =
-                ValueAnimator.ofArgb(mutedColor, lightVibrantColor, vibrantColor)
+            val colorAnimation = ValueAnimator.ofArgb(mutedColor, lightVibrantColor, vibrantColor)
             colorAnimation.duration = 10000
             colorAnimation.repeatCount = ValueAnimator.INFINITE
             colorAnimation.repeatMode = ValueAnimator.REVERSE

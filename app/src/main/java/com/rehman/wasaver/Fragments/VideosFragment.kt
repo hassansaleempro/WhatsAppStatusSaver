@@ -217,13 +217,10 @@ class VideosFragment : Fragment() {
             if (isInstalled("com.whatsapp")) {
 
                 starDir = "Android%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia%2F.Statuses"
+
             } else if (isInstalled("com.whatsapp.w4b")) {
+
                 starDir = "Android%2Fmedia%2Fcom.whatsapp.w4b%2FWhatsApp%2FMedia%2F.Statuses"
-            } else {
-                Toast.makeText(
-                    requireContext(), "Original WhatsApp is not installed", Toast
-                        .LENGTH_SHORT
-                ).show()
             }
 
 

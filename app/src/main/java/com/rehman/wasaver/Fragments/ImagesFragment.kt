@@ -203,13 +203,8 @@ class ImagesFragment : Fragment() {
                 starDir = "Android%2Fmedia%2Fcom.whatsapp%2FWhatsApp%2FMedia%2F.Statuses"
             } else if (isInstalled("com.whatsapp.w4b")) {
                 starDir = "Android%2Fmedia%2Fcom.whatsapp.w4b%2FWhatsApp%2FMedia%2F.Statuses"
-            } else {
-                Toast.makeText(
-                    requireContext(), "Original WhatsApp is not installed", Toast
-                        .LENGTH_SHORT
-                ).show()
             }
-            var uri = intent.getParcelableExtra<Uri>("android.provider.extra.INITIAL_URI")
+            var uri = intent.getParcelableExtra<Uri>("android.provider.extra.INITIAL_URI") as Uri
             var scheme = uri.toString()
 
             scheme = scheme.replace("/root/", "/Document/")
@@ -219,6 +214,7 @@ class ImagesFragment : Fragment() {
             uri = Uri.parse(scheme)
 
             intent.putExtra("android.provider.extra.INITIAL_URI", uri)
+            intent.putExtra("android.content.extra.SHOW_ADVANCED",true)
 
             startActivityForResult(intent, 1234)
 
@@ -269,7 +265,7 @@ class ImagesFragment : Fragment() {
 
     private fun getData() {
         var targetPath =
-            Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp/Media/" + ".Statuses"
+            Environment.getExternalStorageDirectory().absolutePath + "/WhatsApp/Media/.Statuses"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             targetPath =
